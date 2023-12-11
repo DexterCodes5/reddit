@@ -95,7 +95,7 @@ public class AuthService {
         Cookie cookie = new Cookie("jwt", refreshToken);
         cookie.setHttpOnly(true);
         cookie.setMaxAge((int) refreshTokenExpiration);
-        cookie.setSecure(true);
+       // cookie.setSecure(true);
         // This has to be set to work for all endpoints
         cookie.setPath("/");
         response.addCookie(cookie);
