@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +23,16 @@ public class StorageService {
     public String uploadUserImage(int userId, MultipartFile file) throws IOException {
         String fileName = userId + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
         String filePath = USER_IMAGES_PATH + fileName;
-        ImageData fileData = imageDataRepository.save(new ImageData(fileName, file.getContentType(), filePath));
+        Optional<ImageData> imageDataFromDbOptional = imageDataRepository.findByUserId(userId);
+        if (imageDataFromDbOptional.isPresent()) {
+            ImageData imageDataFromDb = imageDataFromDbOptional.get();
+            imageDataFromDb.setName(fileName);
+            imageDataFromDb.setType(file.getContentType());
+            imageDataFromDb.setFilePath(filePath);
+            imageDataRepository.save(imageDataFromDb);
+        } else {
+            imageDataRepository.save(new ImageData(fileName, file.getContentType(), filePath, userId));
+        }
         // Writes file to the file system
         file.transferTo(new File(filePath));
         return fileName;

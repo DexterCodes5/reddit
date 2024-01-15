@@ -1,7 +1,7 @@
 package dev.dex.reddit.service;
 
+import dev.dex.reddit.entity.user.User;
 import dev.dex.reddit.repository.UserRepository;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,24 +16,16 @@ public class LogoutService implements LogoutHandler {
 
     @Override
     public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie: cookies) {
-                if (cookie.getName().equals("jwt")) {
-                    String refreshToken = cookie.getValue();
-                    var user = userRepository.findByRefreshToken(refreshToken);
-                    if (user.isPresent()) {
-                        user.get().setRefreshToken(null);
-                        userRepository.save(user.get());
-                    }
-                    break;
-                }
-            }
+        final String authHeader = request.getHeader("Authorization");
+        final String jwt;
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            return;
         }
-
-        Cookie deleteCookie = new Cookie("jwt", null);
-        deleteCookie.setMaxAge(0);
-        deleteCookie.setPath("/");
-        response.addCookie(deleteCookie);
+        jwt = authHeader.substring(7);
+        User user = userRepository.findByAccessToken(jwt)
+                .orElseThrow(() -> new RuntimeException("Invalid access token"));
+        user.setAccessToken(null);
+        user.setRefreshToken(null);
+        userRepository.save(user);
     }
 }

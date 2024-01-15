@@ -16,4 +16,15 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     void updateImgById(@Param("id") int id, @Param("img") String img);
 
     Optional<User> findByRefreshToken(String refreshToken);
+
+    Optional<User> findByAccessToken(String jwt);
+
+    Optional<User> findByVerificationCode(String verificationCode);
+
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+
+    Optional<User> findByEmail(String email);
+
+    Optional<User> findByForgotPasswordCode(String forgotPasswordCode);
 }

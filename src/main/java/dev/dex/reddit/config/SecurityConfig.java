@@ -22,7 +22,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final String[] ALLOWED_URLS = {
-            "api/v1/auth/**", "/api/v1/questions/**", "/api/v1/image-data/**",
+            "/api/v1/auth/**",
+            "/api/v1/questions/get-questions", "/api/v1/questions/{id}",
+            "/api/v1/questions/get-questions-by-user/{username}",
+            "/api/v1/image-data/**",
+            "/api/v1/answers/{questionId}",
+            "/api/v1/users/{username}"
     };
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -56,9 +61,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:3000"));
-        configuration.setAllowedMethods(List.of("GET", "POST"));
-        configuration.setAllowedHeaders(List.of("Content-Type"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE"));
+        configuration.setAllowedHeaders(List.of("Content-Type", "Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

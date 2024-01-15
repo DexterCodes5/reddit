@@ -1,4 +1,4 @@
-package dev.dex.reddit.models.responsemodel;
+package dev.dex.reddit.models.responsemodels;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

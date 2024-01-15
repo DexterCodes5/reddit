@@ -2,8 +2,7 @@ package dev.dex.reddit.entity;
 
 import dev.dex.reddit.entity.user.User;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Timestamp;
 
@@ -11,6 +10,9 @@ import java.sql.Timestamp;
 @Table(name = "answer")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Answer {
     @Id
     @SequenceGenerator(name = "answer_seq", sequenceName = "answer_seq", allocationSize = 1)
@@ -18,12 +20,9 @@ public class Answer {
     private Integer id;
     private String content;
     private Timestamp postTimestamp;
+    private int questionId;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "question_id")
-    private Question question;
-
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -33,6 +32,7 @@ public class Answer {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", postTimestamp=" + postTimestamp +
+                ", questionId=" + questionId +
                 '}';
     }
 }

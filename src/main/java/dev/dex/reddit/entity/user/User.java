@@ -26,11 +26,14 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private Boolean active;
+    private String verificationCode;
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private String refreshToken;
     private String img;
+    private String accessToken;
+    private String refreshToken;
+    private String forgotPasswordCode;
 
     @Override
     public String getUsername() {

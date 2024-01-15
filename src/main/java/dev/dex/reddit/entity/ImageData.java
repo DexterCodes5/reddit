@@ -16,10 +16,12 @@ public class ImageData {
     private String name;
     private String type;
     private String filePath;
+    private Integer userId;
 
-    public ImageData(String name, String type, String filePath) {
+    public ImageData(String name, String type, String filePath, Integer userId) {
         this.name = name;
         this.type = type;
         this.filePath = filePath;
+        this.userId = userId;
     }
 }
