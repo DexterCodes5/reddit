@@ -1,0 +1,23 @@
+.anqm-input-container {
+    margin-top: 1rem;
+}
+
+.anqm-input {
+    box-sizing: border-box;
+    width: 100%;
+    display: block;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--borderRadius);
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.anqm-input:focus-visible {
+    border: 2px solid var(--primaryColor);
+    outline: none;
+}
+
+.add-new-q-btn {
+    margin-top: 2rem;
+}

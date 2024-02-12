@@ -1,0 +1,44 @@
+.smwr {
+    background-color: var(--dangerColor);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.auth-input-row {
+    margin-top: 1rem;
+}
+
+.forgot-password {
+    color: rgb(155, 155, 155);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.auth-btn {
+    margin-top: 2rem;
+}
+
+.sign-up-link-container {
+    border-top: 1px solid rgb(229, 229, 229);
+}
+
+.sign-up-link {
+    color: rgb(155, 155, 155);
+    cursor: pointer;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.sign-up-link:hover {
+    text-decoration: underline;
+}
+
+.check-you-email-text {
+    margin-top: 1rem;
+}

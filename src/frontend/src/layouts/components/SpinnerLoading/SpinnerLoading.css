@@ -1,0 +1,23 @@
+.spinner-loading {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    padding-top: 100px;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid transparent;
+    border-right-color: black;
+    animation: l2 1s infinite linear;
+}
+
+@keyframes l2 {
+    to {
+        transform: rotate(1turn)
+    }
+}

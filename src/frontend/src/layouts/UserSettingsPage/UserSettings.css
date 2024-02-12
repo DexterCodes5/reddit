@@ -1,0 +1,82 @@
+.user-page-settings {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.user-page-settings-options {
+    margin-top: 5px;
+}
+
+.user-page-settings-option {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-page-settings-option-active {
+    background-color: black;
+    color: white;
+}
+
+.user-page-settings-mid {
+    flex: 1;
+}
+
+.settings-img-container {
+    position: relative;
+    width: fit-content
+}
+
+.settings-img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+
+.settings-change-picture {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    background-color: rgb(95, 95, 95);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.settings-img-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.settings-label {
+    font-size: 20px;
+}
+
+.settings-label:not(:first-child) {
+    margin-top: 2rem;
+}
+
+.settings-input {
+    box-sizing: border-box;
+    width: 200px;
+    display: block;
+    border: 1px solid var(--inputBorderColor);
+    border-radius: var(--borderRadius);
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.settings-input:focus {
+    border: 1px solid black;
+    outline: none;
+}
+
+.settings-save-btn {
+    margin-top: 2rem;
+}

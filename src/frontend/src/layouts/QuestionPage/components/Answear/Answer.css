@@ -1,0 +1,38 @@
+.answer {
+    border-bottom: 1px solid var(--borderColor);
+    margin-bottom: 1rem;
+}
+
+.answer:last-child {
+    margin: 0;
+}
+
+.answer-content {
+    margin-top: 10px;
+    margin-bottom: 1rem;
+}
+
+.answer-footer {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.answer-footer-btn {
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.answer-footer-btn:hover {
+    background-color: rgb(168, 168, 168);
+}
+
+.answer-footer-btn-active {
+    display: flex;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: red;
+}

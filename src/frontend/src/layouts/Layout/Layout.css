@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.account-verified {
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgb(255, 153, 0);
+  color: white;
+  height: 32px;
+  padding: 5px;
+  transition: height 1s ease-in-out, padding 1s ease-in-out;
+
+}
+
+.account-verified-anim {
+  animation: dropDown 1s ease-in-out;
+}
+
+.account-verified-hidden {
+  height: 0px;
+  padding: 0px;
+}
+
+.layout-mid {
+  padding-top: 1rem;
+  flex-grow: 1;
+}
+
+@keyframes dropDown {
+  0% {
+    height: 0;
+    padding: 0;
+  }
+
+  100% {
+    height: 32px;
+    padding: 5px;
+  }
+}
